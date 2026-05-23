@@ -34,3 +34,10 @@ Usage:
 - put generated localisation inside Generated folder (LocalisationAutomation/Generated) with the same structure as for CurrentLocalization
 - in terminal inside LocalisationAutomation folder run “ruby langToLangCompare.rb”
 - get localization_diff.txt from Generated folder
+
+
+————————————
+License
+
+Released under the MIT License. See the LICENSE file for details.
+Copyright © 2026 Dmitry Protopopov (github.com/Dimajp).
