@@ -1,0 +1,11 @@
+# Generated output
+Generated/
+
+# Test inputs (per-user data)
+CurrentLocalization/
+
+# macOS metadata
+.DS_Store
+
+# Ruby
+*.gem

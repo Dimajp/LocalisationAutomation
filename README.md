@@ -1,43 +1,69 @@
-————————————
-csvToLangFiles.rb
+# LocalisationAutomation
 
-Generates localisation files from provided localization.csv file for our project based on current folder hierarchy
+> Ruby scripts to convert between CSV and iOS localisation files, plus a diff tool to verify nothing was lost.
 
-Usage: 
-- do not forget to update "CHANGE ME TO YOUR OUTPUT DIRECTORY" string
-- copy past localization.csv file inside LocalisationAutomation folder
-- in terminal inside LocalisationAutomation folder run “ruby csvToLangFiles.rb localization.csv”
+Three small helpers for managing iOS app localisations:
 
+- **`csvToLangFiles.rb`** — generate `Localizable.strings` files from a master CSV
+- **`langFilesTocsv.rb`** — export existing `Localizable.strings` files to a CSV
+- **`langToLangCompare.rb`** — compare two localisation sets to verify nothing was lost
 
-————————————
-langFilesTocsv.rb
+## Requirements
 
-Helping script to create localization.csv from existent localisation files. 
-Ideally should be used only once per project.
+- Ruby 2.7+
 
-Usage:
-- create CurrentLocalization folder inside LocalisationAutomation
-- copy inside CurrentLocalization all necessary *.lproj folders with only Localizable.strings file inside them
-- in terminal inside LocalisationAutomation folder run “ruby langFilesTocsv.rb”
-- get localization.csv from Generated folder
+---
 
+## csvToLangFiles.rb
 
-————————————
-langToLangCompare.rb
+Generates `.strings` files from a `localization.csv` file based on the current folder hierarchy.
 
-Helping script to compare initial localisation with generated one. 
-Used as a test functionality to tune up localisation scripts to be sure noting is lost/broken.
+### Usage
 
-Usage:
-- create CurrentLocalization folder inside LocalisationAutomation
-- copy inside CurrentLocalization all necessary *.lproj folders with only Localizable.strings file inside them
-- put generated localisation inside Generated folder (LocalisationAutomation/Generated) with the same structure as for CurrentLocalization
-- in terminal inside LocalisationAutomation folder run “ruby langToLangCompare.rb”
-- get localization_diff.txt from Generated folder
+1. Update the `"CHANGE ME TO YOUR OUTPUT DIRECTORY"` string inside the script with your target output path.
+2. Copy your `localization.csv` file into the `LocalisationAutomation/` folder.
+3. From a terminal inside `LocalisationAutomation/`, run:
+   ```bash
+   ruby csvToLangFiles.rb localization.csv
+   ```
 
+---
 
-————————————
-License
+## langFilesTocsv.rb
 
-Released under the MIT License. See the LICENSE file for details.
+Creates a `localization.csv` from existing `.strings` files. Typically used once per project to bootstrap the CSV.
+
+### Usage
+
+1. Create a `CurrentLocalization/` folder inside `LocalisationAutomation/`.
+2. Copy all relevant `*.lproj` folders into `CurrentLocalization/` — each should contain only the `Localizable.strings` file.
+3. From a terminal inside `LocalisationAutomation/`, run:
+   ```bash
+   ruby langFilesTocsv.rb
+   ```
+4. The generated `localization.csv` appears in the `Generated/` folder.
+
+---
+
+## langToLangCompare.rb
+
+Compares the original localisation with a generated one to verify nothing was lost or broken. Useful as a sanity check when iterating on the conversion scripts.
+
+### Usage
+
+1. Create a `CurrentLocalization/` folder inside `LocalisationAutomation/`.
+2. Copy all relevant `*.lproj` folders into `CurrentLocalization/`.
+3. Place the generated localisation inside `LocalisationAutomation/Generated/` with the same structure as `CurrentLocalization/`.
+4. From a terminal inside `LocalisationAutomation/`, run:
+   ```bash
+   ruby langToLangCompare.rb
+   ```
+5. The diff appears as `localization_diff.txt` in the `Generated/` folder.
+
+---
+
+## License
+
+Released under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+
 Copyright © 2026 Dmitry Protopopov (github.com/Dimajp).
